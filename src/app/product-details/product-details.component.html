@@ -1,0 +1,22 @@
+<h2>Product Details</h2>
+
+<div *ngIf="product">
+  <h3>{{ product.name }}</h3>
+  <h4>{{ product.price | currency }}</h4>
+
+  <p *ngIf="product.description; else noDescription">
+    {{ product.description }}
+  </p>
+  <ng-template #noDescription>
+    <p>
+      No description provided
+    </p>
+  </ng-template>
+
+  <button (click)="addToCart(product)">Buy</button>
+</div>
+<ng-template #noProduct>
+  <div>
+    Oops! Nothing here...
+  </div>
+</ng-template>
