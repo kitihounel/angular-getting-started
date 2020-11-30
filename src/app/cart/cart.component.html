@@ -13,3 +13,18 @@
 <p>
   <a routerLink="/shipping">Shipping Prices</a>
 </p>
+
+<h4>Fill this form to purchase your products</h4>
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+  <div>
+    <label for="name">Name</label>
+    <input id="name" autocomplete="off" type="text" formControlName="name">
+  </div>
+
+  <div>
+    <label for="address">Address</label>
+    <input id="address" autocomplete="off" type="text" formControlName="address">
+  </div>
+
+  <button class="button" type="submit">Purchase</button>
+</form>
