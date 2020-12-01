@@ -18,12 +18,12 @@
 <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
   <div>
     <label for="name">Name</label>
-    <input id="name" autocomplete="off" type="text" formControlName="name">
+    <input #name id="name" autocomplete="off" type="text" formControlName="name">
   </div>
 
   <div>
     <label for="address">Address</label>
-    <input id="address" autocomplete="off" type="text" formControlName="address">
+    <input #address id="address" autocomplete="off" type="text" formControlName="address">
   </div>
 
   <button class="button" type="submit">Purchase</button>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
 import { CartService } from '../cart.service';
@@ -11,6 +11,8 @@ import { CartService } from '../cart.service';
 export class CartComponent implements OnInit {
   items;
   checkoutForm;
+  @ViewChild("name") nameInput: ElementRef;
+  @ViewChild("address") addressInput: ElementRef;
 
   constructor(private cartService: CartService, private formBuilder: FormBuilder) {
     this.checkoutForm = this.formBuilder.group({
@@ -23,8 +25,28 @@ export class CartComponent implements OnInit {
     this.items = this.cartService.getItems();
   }
 
+  ngAfterViewInit() {
+    this.nameInput.nativeElement.focus()
+  }
+
   onSubmit(customerData) {
-    // Process checkout data here
+    if (this.cartService.getItems().length == 0) {
+      window.alert("Your cart is empty.")
+      return
+    }
+
+    if (customerData.name.trim() == "") {
+      window.alert("Please enter your name.")
+      this.nameInput.nativeElement.focus()
+      return
+    }
+
+    if (customerData.address.trim() == "") {
+      window.alert("Please enter your address.")
+      this.addressInput.nativeElement.focus()
+      return
+    }
+
     this.items = this.cartService.clearCart();
     this.checkoutForm.reset();
 
