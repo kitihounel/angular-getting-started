@@ -13,3 +13,6 @@ npx -p @angular/cli@11.0.2 ng new dummy-app
 ```
 
 Procedure found @ https://frontbackend.com/angular/how-to-generate-angular-application-in-a-specific-version-using-ng-new-command.
+
+## NPX beginner guide
+Read this: https://jaireina.medium.com/npx-makes-npm-nicer-and-even-more-useful-50086375ee6c.
